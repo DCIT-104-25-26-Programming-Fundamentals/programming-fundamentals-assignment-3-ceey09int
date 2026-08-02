@@ -6,7 +6,9 @@
 //
 // Write a JavaScript program that generates multiplication tables using loops
 // and functions.
-//
+//const readlineSync = require("readline-sync");
+
+// Part A: Print Fibonacci sequence
 // -----------------------------------------------------------------------------
 // HOW TO RUN THIS PROGRAM
 // -----------------------------------------------------------------------------
@@ -59,4 +61,46 @@
 // YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
 // =============================================================================
 
+const readlineSync = require("readline-sync");
 
+// Part A: Print multiplication table for one number
+function printTable(number) {
+    console.log(`\nMultiplication Table for ${number}:`);
+
+    for (let i = 1; i <= 12; i++) {
+        console.log(`${number} x ${i} = ${number * i}`);
+    }
+}
+
+// Part B: Print tables from 1 to N
+function printTables(n) {
+    for (let i = 1; i <= n; i++) {
+        printTable(i);
+        console.log("---------------------------");
+    }
+}
+
+// Main function
+function main() {
+    // Part A
+    let number = readlineSync.questionInt("Enter a number: ");
+
+    if (number <= 0) {
+        console.log("Error: Number must be positive.");
+        return;
+    }
+
+    printTable(number);
+
+    // Part B
+    let n = readlineSync.questionInt("\nEnter N for tables from 1 to N: ");
+
+    if (n <= 0) {
+        console.log("Error: N must be positive.");
+        return;
+    }
+
+    printTables(n);
+}
+
+main();

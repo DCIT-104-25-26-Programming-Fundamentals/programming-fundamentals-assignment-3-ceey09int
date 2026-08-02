@@ -74,4 +74,104 @@
 // YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
 // =============================================================================
 
+const readlineSync = require("readline-sync");
 
+// Arithmetic functions
+function add(a, b) {
+    return a + b;
+}
+
+function subtract(a, b) {
+    return a - b;
+}
+
+function multiply(a, b) {
+    return a * b;
+}
+
+function divide(a, b) {
+    if (b === 0) {
+        return null;
+    }
+    return a / b;
+}
+
+function modulus(a, b) {
+    if (b === 0) {
+        return null;
+    }
+    return a % b;
+}
+
+function exponent(a, b) {
+    return a ** b;
+}
+
+// Main program
+function main() {
+    while (true) {
+        console.log("\n============================");
+        console.log("     SIMPLE CALCULATOR");
+        console.log("============================");
+        console.log("1. Addition");
+        console.log("2. Subtraction");
+        console.log("3. Multiplication");
+        console.log("4. Division");
+        console.log("5. Modulus");
+        console.log("6. Exponentiation");
+        console.log("7. Quit");
+
+        let choice = readlineSync.questionInt("Select an operation (1-7): ");
+
+        if (choice === 7) {
+            console.log("Goodbye!");
+            break;
+        }
+
+        if (choice < 1 || choice > 7) {
+            console.log("Invalid choice.");
+            continue;
+        }
+
+        let first = readlineSync.questionFloat("Enter first number: ");
+        let second = readlineSync.questionFloat("Enter second number: ");
+
+        switch (choice) {
+            case 1:
+                console.log(`Result: ${add(first, second).toFixed(2)}`);
+                break;
+
+            case 2:
+                console.log(`Result: ${subtract(first, second).toFixed(2)}`);
+                break;
+
+            case 3:
+                console.log(`Result: ${multiply(first, second).toFixed(2)}`);
+                break;
+
+            case 4:
+                let div = divide(first, second);
+                if (div === null) {
+                    console.log("Error: Cannot divide by zero.");
+                } else {
+                    console.log(`Result: ${div.toFixed(2)}`);
+                }
+                break;
+
+            case 5:
+                let mod = modulus(first, second);
+                if (mod === null) {
+                    console.log("Error: Cannot divide by zero.");
+                } else {
+                    console.log(`Result: ${mod.toFixed(2)}`);
+                }
+                break;
+
+            case 6:
+                console.log(`Result: ${exponent(first, second).toFixed(2)}`);
+                break;
+        }
+    }
+}
+
+main();
